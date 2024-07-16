@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.Scanner;
+
+class simple
+ {
+    public static void main(String[] args) 
+   {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter principal amount: ");
+        int p = s.nextInt();
+        System.out.print("Enter number of years: ");
+        int y = s.nextInt();
+        System.out.print("Are you a youth (y/n): ");
+        char age = s.next().charAt(0);
+        double intrst = 0.0;
+        if (age == 'y' || age == 'Y') 
+       {
+            intrst = (p * y * 0.12) / 100;
+        }
+        else 
+       {
+            intrst = (p * y * 0.10) / 100;
+        }
+
+        System.out.println("Interest: " + intrst);
+    }
+}
+
