@@ -1,0 +1,14 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class sq {
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        double n = input.nextDouble();
+        
+        double sqrt = Math.sqrt(n);
+        
+        System.out.println(sqrt + ", " + (-sqrt));
+    }
+}
