@@ -1,0 +1,190 @@
+1. Create a class AddAmount with an initial amount of $50, and derived classes to handle adding an amount to the Piggie Bank; then display the final amount.
+
+
+import java.util.*;
+class addamount
+{
+	int amo;
+	addamount()
+	{
+		amo = 50;
+	}
+}
+class noamo extends addamount
+{
+	void amo1()
+	{
+		amo = super.amo;
+		System.out.println("piggie bank balance before adding the money : " +amo);
+	}
+}
+class isamo extends addamount
+{
+	void amo2()
+	{
+		amo = super.amo;
+		int dep;
+		Scanner n = new Scanner (System.in);
+		System.out.println("enter the number to add inside the piggie bank : ");
+		dep = n.nextInt();
+		System.out.println("piggie bank balance after adding the money : " +(dep+amo));
+	}
+}
+class iamt
+{
+	public static void main(String[] args)
+	{
+		noamo a = new noamo();
+		a.amo1();
+		isamo i = new isamo();	
+		i.amo2();
+	}
+}
+
+
+2.Write a java program to demonstrate the multilevel inheritance by creating a class cuboid which extends class rectangle, class shape. It calculates area and volume.
+
+import java.util.*;
+class shape
+{
+	int l,b,h;
+	shape()
+	{
+		Scanner n = new Scanner(System.in);
+		System.out.println("enter the length , width , height");
+		l = n.nextInt();
+		b = n.nextInt();
+		h = n.nextInt();
+	}
+}
+class rectangle extends shape
+{
+	int l = super.l;
+	int b = super.b;
+	int h = super.h;
+	void area()
+	{
+		System.out.println("area of rectangle :  " +(l*b));
+		System.out.println("volume of rectangle : " +(l*b*h));
+	} 
+}
+class cuboid extends rectangle
+{
+	int l = super.l;
+	int b = super.b;
+	int h = super.h;
+	int ans = l*b + h*l + b*h;
+	void area1()
+	{
+		System.out.println("area of cuboid :  " +(2*ans ));
+		System.out.println("volume of cuboid : " +(l*b*h));
+	} 
+}
+
+class ishape
+{
+	public static void main(String[] args)
+	{
+		cuboid c = new cuboid();
+		c.area1();
+		c.area();
+
+	}
+}
+
+
+3.Write a program to calculate the bonus of the employees. The class master derives the information from both admin and from account classes which derives information from the class person. Create base and all derived classes having same  member
+functions and parameters called getdata, display data and bonus.
+
+
+import java.util.*;
+class person
+{
+	String name;
+	int id;
+	long sal;
+	person()
+	{
+		Scanner n = new Scanner (System.in);
+		System.out.println("enter employee name : ");
+		name = n.next();
+		System.out.println("enter the id number , salary : ");
+		id = n.nextInt();
+		sal = n.nextLong();
+	}
+}
+class admin extends person
+{
+	long sal = super.sal;
+	void bonus()
+	{
+		
+		System.out.println("the admin bonus precentange is 10%");
+		System.out.println("admin bonus : " +(0.10*sal));
+	}
+}
+class account extends person
+{
+	long sal = super.sal;
+	void bonus()
+	{
+		System.out.println("the admin bonus precentange is 15%");
+		System.out.println("admin bonus : " +(0.15*sal));
+	}
+}
+class imaster
+{
+	public static void main(String[] args)
+	{
+		admin a = new admin();
+		a.bonus();
+		account c = new account();
+		c.bonus();
+	}
+}
+
+4.A paper consists of 4 authors, but one author didn’t do any work but he wants to put his name in this paper. But others are not interested at the same time they want to add another author as a 5th author. How to identify the  Not worked for paper.
+Write a Java code for the above scenario.
+
+
+class author { 
+    String name; 
+    author(String n) { 
+        name = n; 
+    } 
+} 
+
+class cauthor extends author { 
+    boolean con; 
+    cauthor(String n, boolean con) { 
+        super(n); 
+        this.con = con; 
+    } 
+} 
+
+class pauthor extends cauthor { 
+    pauthor(String n, boolean con) { 
+        super(n, con); // Fix: changed 'nameS' to 'n'
+    } 
+    void cb() { 
+        if (!con) { 
+            System.out.println("author didn't contribute: " + name); 
+        } 
+    } 
+} 
+
+class paper { 
+    public static void main(String[] args) { 
+        pauthor[] a = new pauthor[5]; 
+        a[0] = new pauthor("Author1", true); 
+        a[1] = new pauthor("Author2", true); 
+        a[2] = new pauthor("Author3", true); 
+        a[3] = new pauthor("Author4", false); 
+        a[4] = new pauthor("Author5", true); 
+
+        int i; 
+        for (i = 0; i < 5; i++) { 
+            a[i].cb(); 
+        } 
+    } 
+}
